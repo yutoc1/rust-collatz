@@ -21,4 +21,4 @@ N = 10^6
     sudo docker buildx use wasmbuilder↲
 
     sudo docker buildx build --platform wasi/wasm32 --load -t wasm-collatz:0.1 .
-    sudo docker container run --rm --name=mydockerwasm --runtime=io.containerd.wasmedge.v1 wasm-wasm:0.1
+    sudo docker container run --rm --name=rust-collatz --runtime=io.containerd.wasmedge.v1 --platform=wasi/wasm32 wasm-wasm:0.1
