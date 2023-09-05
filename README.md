@@ -16,5 +16,9 @@ N = 10^6
 ### WASM
 
     cargo build --target wasm32-wasi --release
-    sudo docker buildx build -t wasm-collatz:0.1 .
+
+    sudo docker buildx create --name wasmbuilder --driver docker-container --bootstrap↲↲
+    sudo docker buildx use wasmbuilder↲
+
+    sudo docker buildx build --platform wasi/wasm32 --load -t wasm-collatz:0.1 .
     sudo docker container run --rm --name=mydockerwasm --runtime=io.containerd.wasmedge.v1 wasm-wasm:0.1
